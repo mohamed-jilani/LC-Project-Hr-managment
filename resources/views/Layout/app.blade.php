@@ -8,14 +8,15 @@
 
 
     @php
-    // Suppose $userType est une variable qui contient le type de l'utilisateur connecté
-    $userType = Auth::user()->is_admin; // Remplace cela par la méthode réelle pour obtenir le type de l'utilisateur
+
+    $userType = Auth::user()->role; 
+    //dd(Auth::user());
     //dd($userType);
     @endphp
 
-    @if($userType == 1)
+    @if($userType === "manager")
         @include('Layout.sidebar-manager')
-    @elseif($userType === 2)
+    @elseif($userType === "hr")
         @include('Layout.sidebar-hr')
     @else
         @include('Layout.sidebar')

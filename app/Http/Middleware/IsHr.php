@@ -15,7 +15,7 @@ class IsHr
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->user()->is_admin==2){
+        if(auth()->user()->role=== "hr"){
             return $next($request);
         }
         else{

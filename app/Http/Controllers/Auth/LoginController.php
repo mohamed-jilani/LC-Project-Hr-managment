@@ -47,13 +47,13 @@ class LoginController extends Controller
         ]);
         //dd($input);
         if(auth()->attempt(array('email' => $input['email'], 'password' =>$input['password']))){
-            if(auth()->user()->is_admin == 1){
+            if(auth()->user()->role === "manager"){
                 return redirect()->route('manager.home');
             }
-            if(auth()->user()->is_admin == 2) {
+            if(auth()->user()->role === "hr") {
                 return redirect()->route('hr.home');
             }
-            if(auth()->user()->is_admin == 0){
+            if(auth()->user()->role === "user"){
                 return redirect()->route('home');
             }
             return redirect()->route('login')->with('error','Input proper email/password.');

@@ -52,9 +52,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function role(): Attribute
     {
         return new Attribute(
-            get: fn($value) => ["user","editor","admin"][$value],
+            get: fn($value) => ["user","manager","hr"][$value],
         );
     }
+
+
     public function group()
     {
         return $this->belongsTo(Group::class);
