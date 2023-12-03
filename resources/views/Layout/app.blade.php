@@ -9,7 +9,8 @@
 
     @php
     // Suppose $userType est une variable qui contient le type de l'utilisateur connecté
-    $userType = Auth::user()->group_id; // Remplace cela par la méthode réelle pour obtenir le type de l'utilisateur
+    $userType = Auth::user()->is_admin; // Remplace cela par la méthode réelle pour obtenir le type de l'utilisateur
+    //dd($userType);
     @endphp
 
     @if($userType == 1)

@@ -62,6 +62,7 @@ Route::get('/hr/home', [App\Http\Controllers\HomeController::class, 'hrHome'])->
 
 
 //user
+//controller -> BackendEmployee/*
 
 Route::get('dashboard',[AdminEmpController::class, 'dashboard'])->name('dashboardemp');
 Route::get('profile',[ProfilempController::class, 'profile'])->name('profileemp');
@@ -73,6 +74,7 @@ Route::get('historique',[HistoriquempController::class, 'historique'])->name('hi
 
 
 //HR
+//controller -> Backend/*
 
 Route::get('dashboard_hr',[AdminController::class, 'dashboard'])->name('dashboard_hr')->middleware('is_hr');
 Route::get('profile_hr',[ProfileController::class, 'profile'])->middleware('is_hr');
@@ -84,6 +86,7 @@ Route::get('historique_hr',[HistoriqueController::class, 'historique'])->middlew
 
 
 //manager
+//controller -> BackendManager/*
 
 
 Route::get('dashboard_manager',[AdminMController::class, 'dashboard'])->name('dashboard_manager')->middleware('is_admin');
