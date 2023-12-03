@@ -22,11 +22,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'is_admin',
+//        'is_admin',
         'group_id',
         'departement_id',
         'job_id',
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -68,3 +70,4 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Job::class);
     }
 }
+
