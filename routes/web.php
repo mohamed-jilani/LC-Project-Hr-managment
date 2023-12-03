@@ -72,6 +72,17 @@ Route::get('demandeDeConges',[DemandeDeCongesempController::class, 'demandeDeCon
 Route::get('historique',[HistoriquempController::class, 'historique'])->name('historique');
 
 
+    Route::get('/user/delete-tache/{id}', [TimesheetempController::class, 'delete_tache']);
+    Route::get('/user/update-tache/{id}', [TimesheetempController::class, 'update_tache']);
+    Route::get('/user/ajouter', [TimesheetempController::class, 'ajouter_tache']);
+    Route::get('/user/ajouter/{thedate}', [TimesheetempController::class, 'ajouter_tache_jour']);
+    
+    Route::post('/user/ajouter/traitement', [TimesheetempController::class, 'ajouter_tache_traitement']);
+    Route::post('/user/update/traitement', [TimesheetempController::class, 'update_tache_traitement']);
+
+
+
+
 
 //HR
 //controller -> Backend/*
@@ -82,6 +93,18 @@ Route::get('timesheet_hr',[TimesheetController::class, 'timesheet'])->name('time
 Route::get('notifications_hr',[NotificationsController::class, 'notifications'])->middleware('is_hr');
 Route::get('demandeDeConges_hr',[DemandeDeCongesController::class, 'demandeDeConges'])->middleware('is_hr');
 Route::get('historique_hr',[HistoriqueController::class, 'historique'])->middleware('is_hr');
+
+
+Route::prefix('hr')->group(function(){
+
+    Route::get('/delete-tache/{id}', [TimesheetController::class, 'delete_tache'])->middleware('is_hr');
+    Route::get('/update-tache/{id}', [TimesheetController::class, 'update_tache'])->middleware('is_hr');
+    Route::get('/ajouter', [TimesheetController::class, 'ajouter_tache'])->middleware('is_hr');
+    Route::get('/ajouter/{thedate}', [TimesheetController::class, 'ajouter_tache_jour'])->middleware('is_hr');
+    Route::post('/ajouter/traitement', [TimesheetController::class, 'ajouter_tache_traitement'])->middleware('is_hr');
+    Route::post('/update/traitement', [TimesheetController::class, 'update_tache_traitement'])->middleware('is_hr');
+});
+
 
 
 
@@ -97,23 +120,20 @@ Route::get('demandeDeConges_manager',[DemandeDeCongesMController::class, 'demand
 Route::get('historique_manager',[HistoriqueMController::class, 'historique'])->name('historique_manager')->middleware('is_admin');
 
 
-
-    Route::get('/delete-tache/{id}', [TimesheetController::class, 'delete_tache']);
-    Route::get('/update-tache/{id}', [TimesheetController::class, 'update_tache']);
-
-    Route::get('/ajouter', [TimesheetController::class, 'ajouter_tache']);
-    Route::get('/ajouter/{thedate}', [TimesheetController::class, 'ajouter_tache_jour']);
-    
-    Route::post('/ajouter/traitement', [TimesheetController::class, 'ajouter_tache_traitement']);
-    Route::post('/update/traitement', [TimesheetController::class, 'update_tache_traitement']);
-
-    Route::get('/validerTache/{id}', [NotificationsMController::class, 'valider_tache']);
-    Route::get('/refuserTache/{id}', [NotificationsMController::class, 'refuser_tache']);
-
-    Route::get('/suppTache/{id}', [NotificationsempController::class, 'supp_tache']);
+Route::prefix('manager')->group(function(){
+    Route::get('/delete-tache/{id}', [TimesheetMController::class, 'delete_tache'])->middleware('is_admin');
+    Route::get('/update-tache/{id}', [TimesheetMController::class, 'update_tache'])->middleware('is_admin');
+    Route::get('/ajouter', [TimesheetMController::class, 'ajouter_tache'])->middleware('is_admin');
+    Route::get('/ajouter/{thedate}', [TimesheetMController::class, 'ajouter_tache_jour'])->middleware('is_admin');
+    Route::post('/ajouter/traitement', [TimesheetMController::class, 'ajouter_tache_traitement'])->middleware('is_admin');
+    Route::post('/update/traitement', [TimesheetMController::class, 'update_tache_traitement'])->middleware('is_admin');
+});
 
 
 
 
 
 
+Route::get('/validerTache/{id}', [NotificationsMController::class, 'valider_tache']);
+Route::get('/refuserTache/{id}', [NotificationsMController::class, 'refuser_tache']);
+Route::get('/suppTache/{id}', [NotificationsempController::class, 'supp_tache']);

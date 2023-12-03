@@ -36,7 +36,7 @@
 
 
 
-          <form action="/hr/update/traitement" method="POST">
+          <form action="/manager/update/traitement" method="POST">
             @csrf
             <input type="text"  name="id" style="display: none;" value="{{$tache->id}}"/>            
             <div class="mb-3">
@@ -62,7 +62,7 @@
           <button type="submit" class="btn btn-primary">modifier</button>
 
           <br> 
-          <a href="/timesheet_hr" class="btn btn-danger"> Revenir à liste des taches</a>
+          <a href="/timesheet_manager" class="btn btn-danger"> Revenir à liste des taches</a>
         
         </form>
 

@@ -16,12 +16,14 @@ class NotificationsempController extends Controller
                    ->where('user_id', $userId)
                    ->get();
 
-        return view('BackendEmloyee.notifications', compact('tache'));
+        return view('BackendEmployee.notifications', compact('tache'));
     }
+    
+    /*
     public function supp_tache(){
         session()->push('hiddenTaskIds', $id);
-
         
     }
+    */
 
 }

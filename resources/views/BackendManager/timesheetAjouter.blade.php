@@ -33,7 +33,7 @@
 
 
 
-<form action="/hr/ajouter/traitement" method="POST">
+<form action="/manager/ajouter/traitement" method="POST">
     @csrf
       <div class="mb-3">
       <label for="description" class="form-label">Description</label>
@@ -57,7 +57,7 @@
   <br>
   <button type="submit" class="btn btn-primary">ajouter</button>
   <br> 
-  <a href="/timesheet_hr" class="btn btn-danger"> Revenir à liste des taches</a>
+  <a href="/timesheet_manager" class="btn btn-danger"> Revenir à liste des taches</a>
 
 </form>
 
