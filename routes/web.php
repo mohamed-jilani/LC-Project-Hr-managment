@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackendManager\TacheValidationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -127,6 +128,9 @@ Route::prefix('manager')->group(function(){
     Route::get('/ajouter/{thedate}', [TimesheetMController::class, 'ajouter_tache_jour'])->middleware('is_admin');
     Route::post('/ajouter/traitement', [TimesheetMController::class, 'ajouter_tache_traitement'])->middleware('is_admin');
     Route::post('/update/traitement', [TimesheetMController::class, 'update_tache_traitement'])->middleware('is_admin');
+    Route::get('/validation', [TacheValidationController::class, 'index'])->name('validationp')->middleware('is_admin');
+    Route::get('/validation/{tacheId}', [TacheValidationController::class, 'validateTache'])->name('validation_tache')->middleware('is_admin');
+
 });
 
 

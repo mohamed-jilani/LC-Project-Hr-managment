@@ -16,6 +16,7 @@ class CreateTacheTable extends Migration
         Schema::create('tache', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description')->nullable();
+            $table->integer('manager_validation')->default(0);
             $table->date('dateCreation')->nullable();
             $table->dateTime('dateRealisationFinal')->nullable();
             $table->timestamps();

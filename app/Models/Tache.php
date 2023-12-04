@@ -20,6 +20,7 @@ class Tache extends Model
     */
     protected $fillable = [
         'description',
+        'manager_validation',
         'dateCreation',
         'dateRealisationFinal',
         'user_id',
