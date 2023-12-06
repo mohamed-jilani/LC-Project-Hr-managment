@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\HistoriqueController;
 use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\TimesheetController;
+use App\Http\Controllers\Backend\notificationRCongesController;
 
 use App\Http\Controllers\BackendEmployee\AdminEmpController;
 use App\Http\Controllers\BackendEmployee\DemandeDeCongesempController;
@@ -99,7 +100,7 @@ Route::get('notifications_hr',[NotificationsController::class, 'notifications'])
 Route::get('demandeDeConges_hr',[DemandeDeCongesController::class, 'demandeDeConges'])->middleware('is_hr');
 Route::get('historique_hr',[HistoriqueController::class, 'historique'])->middleware('is_hr');
 Route::post('/hr/ajouter/traitement', [DemandeDeCongesController::class, 'ajouter_congés_traitement']);
-
+Route::get('notifconges_hr',[notificationRCongesController::class, 'notifconges'])->name('notifconges');
 
 Route::prefix('hr')->group(function(){
 
