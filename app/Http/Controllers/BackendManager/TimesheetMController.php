@@ -72,7 +72,8 @@ class TimesheetMController extends Controller
         return redirect('/manager/ajouter')->with('status', 'ajout avec succés.');  
     }
 
-
+   
+    
     public function update_tache( $id)
     {
         $tache=Tache::find($id);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\BackendManager;
+namespace App\Http\ControllerscongesValidationController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
