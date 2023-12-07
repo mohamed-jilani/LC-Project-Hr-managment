@@ -49,7 +49,9 @@ class TimesheetMController extends Controller
 
     public function  ajouter_tache(){
         $etats = Etat::all();
-        return view('BackendManager.timesheetAjouter', compact('etats'));
+        $d = now()->toDateString();
+        //dd($d);
+        return view('BackendManager.timesheetAjouter', [ 'etats' => $etats, 'd' => $d]);
     }
 
 
@@ -64,9 +66,11 @@ class TimesheetMController extends Controller
         $request->validate([
             'description' => 'required',
             'etat_id' => 'required',
+            
         ]);
         
         $request['user_id'] = Auth::id();
+        $request['dateCreation'] = now()->format('Y-m-d');
         Tache::create($request->all());
         
         return redirect('/manager/ajouter')->with('status', 'ajout avec succés.');  

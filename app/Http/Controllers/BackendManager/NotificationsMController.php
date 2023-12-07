@@ -13,6 +13,8 @@ class NotificationsMController extends Controller
         //$tache = Tache::where('etat_id', 3)->get();
         //$user_id = Auth::id();
         $group_id = Auth::user()->group_id;
+
+        //dd(now()->toDateString());
         
         $notif = DB::table('users as U')
         ->join('tache as T', 'U.id', '=', 'T.user_id')
@@ -30,6 +32,9 @@ class NotificationsMController extends Controller
         return view("BackendManager.notifications",['notifications'=>$notif]);
     }
     
+
+
+
     public function  valider_tache($id){
        
         $tache = Tache::findOrFail($id);

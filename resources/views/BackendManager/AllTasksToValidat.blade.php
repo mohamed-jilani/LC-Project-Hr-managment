@@ -4,8 +4,8 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-      <h1>Validation des Taches</h1>
-      <a href="/manager/validatAll" class="btn btn-danger float-end"> toutes les taches </a>
+      <h1>Toutes les Taches de la Semaine</h1>
+
 
       @if (session('status'))
         <div class="alert alert-success alert-dismissible text-white" role="alert">
@@ -62,7 +62,6 @@
                   </thead>
                   <tbody>
                         @foreach($taches as $tache)
-                            @if( $tache->etat_name == "terminé")  
                             <!--
                                  $tache->tache_user_name
                                  $tache->tache_description
@@ -88,15 +87,14 @@
                           <span class="text-xs font-weight-bold">{{  $tache->tache_dateCreation }}</span>
                         </td>
 
-
-
                         @if( $tache->etat_name =='terminé')
                         
                           <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-success">{{  $tache->etat_name }}</span>
                           </td>
                         @else
-                          <td class="align-middle text-center text-sm">
+
+                        <td class="align-middle text-center text-sm">
                             <span class="badge badge-sm bg-gradient-secondary">{{  $tache->etat_name }}</span>
                           </td>
                         
@@ -107,10 +105,14 @@
                           <a href="{{ route('validation_tache', ['tacheId' => $tache->tache_id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             validée
                           </a>
+                          &nbsp;&nbsp;
+                          &nbsp;&nbsp;
+                          <a href="{{ route('prolongation_tache', ['tacheId' => $tache->tache_id]) }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                            prolonger
+                          </a>
                         </td>
               
                       </tr>
-                      @endif
                     @endforeach
 
                   </tbody>

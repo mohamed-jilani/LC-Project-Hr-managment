@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col s12">
       <h1>ajouter une tache</h1>
-      <a href="hr/ajouter" class="btn btn-danger"> ajouter</a>
+      <a href="hr/ajouter" class="btn btn-danger float-end"> ajouter</a>
 
 
       @if (session('status'))
@@ -34,9 +34,6 @@
 
 <div class="container-fluid py-4">
 
-  <!--
-  <p>{$tache}}</p>
-  -->
       <div class="row">
         <div class="col-12">
           <div class="card my-4">
@@ -45,9 +42,7 @@
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Lundi      
                   <span class="text-xs font-weight-bold">{{ $semaine[0] }}</span>
-                    @if(\Carbon\Carbon::parse($semaine[0])->toDateString() == now()->toDateString())
-                      <a href="hr/ajouter/{{ $semaine[0] }}" class="btn btn-warning float-end">Ajouter</a>
-                    @endif
+                    
                 </h6>
               </div>
             </div>
@@ -139,9 +134,6 @@
           <h6 class="text-white text-capitalize ps-3">Mardi   
             <span class="text-xs font-weight-bold">{{ $semaine[1] }}</span>
 
-            @if(\Carbon\Carbon::parse($semaine[1])->toDateString() == now()->toDateString())
-         <a href="hr/ajouter/{{ $semaine[1] }}" class="btn btn-warning float-end">Ajouter</a>
-          @endif
           </h6>
           
         </div>
@@ -240,9 +232,6 @@
           <h6 class="text-white text-capitalize ps-3">Mercredi  
             <span class="text-xs font-weight-bold">{{ $semaine[2] }}</span>
 
-            @if(\Carbon\Carbon::parse($semaine[2])->toDateString() == now()->toDateString())
-         <a href="hr/ajouter/{{ $semaine[2] }}" class="btn btn-warning float-end">Ajouter</a>
-          @endif
           </h6>
           
         </div>
@@ -340,9 +329,6 @@
           <h6 class="text-white text-capitalize ps-3">Jeudi 
             <span class="text-xs font-weight-bold">{{ $semaine[3] }}</span>
 
-            @if(\Carbon\Carbon::parse($semaine[3])->toDateString() == now()->toDateString())
-         <a href="hr/ajouter/{{ $semaine[3] }}" class="btn btn-warning float-end">Ajouter</a>
-          @endif
           </h6>
           
         </div>
@@ -439,10 +425,7 @@
         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
           <h6 class="text-white text-capitalize ps-3">Vendredi  
             <span class="text-xs font-weight-bold">{{ $semaine[4] }}</span>
-
-            @if(\Carbon\Carbon::parse($semaine[4])->toDateString() == now()->toDateString())
-         <a href="hr/ajouter/{{ $semaine[0] }}" class="btn btn-warning float-end">Ajouter</a>
-          @endif
+            
           </h6>
           
         </div>

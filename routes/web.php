@@ -129,9 +129,13 @@ Route::prefix('manager')->group(function(){
     Route::post('/ajouter/traitement', [TimesheetMController::class, 'ajouter_tache_traitement'])->middleware('is_admin');
     Route::post('/update/traitement', [TimesheetMController::class, 'update_tache_traitement'])->middleware('is_admin');
     Route::get('/validation', [TacheValidationController::class, 'index'])->name('validationp')->middleware('is_admin');
+    Route::get('/validatAll', [TacheValidationController::class, 'validatAll'])->name('validatAll')->middleware('is_admin');
+    Route::get('/prolongation_tache/{tacheId}', [TacheValidationController::class, 'prolongation_tache'])->name('prolongation_tache')->middleware('is_admin');
     Route::get('/validation/{tacheId}', [TacheValidationController::class, 'validateTache'])->name('validation_tache')->middleware('is_admin');
 
 });
+
+
 
 
 

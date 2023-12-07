@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col s12">
       <h1>ajouter une tache</h1>
-      <a href="manager/ajouter" class="btn btn-danger float-end"> ajouter</a>
+      <a href="/ajouter" class="btn btn-danger"> ajouter</a>
 
 
       @if (session('status'))
@@ -45,7 +45,9 @@
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Lundi      
                   <span class="text-xs font-weight-bold">{{ $semaine[0] }}</span>
-                    
+                    @if(\Carbon\Carbon::parse($semaine[0])->toDateString() == now()->toDateString())
+                      <a href="/ajouter/{{ $semaine[0] }}" class="btn btn-warning float-end">Ajouter</a>
+                    @endif
                 </h6>
               </div>
             </div>
@@ -106,11 +108,11 @@
 
 
                         <td class="align-middle">
-                          <a href="manager/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a href="/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Edit
                           </a>
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <a href="manager/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          <a href="/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Supprimer
                           </a>
                         </td>
@@ -137,6 +139,9 @@
           <h6 class="text-white text-capitalize ps-3">Mardi   
             <span class="text-xs font-weight-bold">{{ $semaine[1] }}</span>
 
+            @if(\Carbon\Carbon::parse($semaine[1])->toDateString() == now()->toDateString())
+         <a href="/ajouter/{{ $semaine[1] }}" class="btn btn-warning float-end">Ajouter</a>
+          @endif
           </h6>
           
         </div>
@@ -203,11 +208,11 @@
 
 
                 <td class="align-middle">
-                  <a href="manager/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="manager/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
                   </a>
                 </td>
@@ -235,6 +240,9 @@
           <h6 class="text-white text-capitalize ps-3">Mercredi  
             <span class="text-xs font-weight-bold">{{ $semaine[2] }}</span>
 
+            @if(\Carbon\Carbon::parse($semaine[2])->toDateString() == now()->toDateString())
+         <a href="/ajouter/{{ $semaine[2] }}" class="btn btn-warning float-end">Ajouter</a>
+          @endif
           </h6>
           
         </div>
@@ -301,11 +309,11 @@
 
 
                 <td class="align-middle">
-                  <a href="manager/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="manager/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
                   </a>
                 </td>
@@ -332,6 +340,9 @@
           <h6 class="text-white text-capitalize ps-3">Jeudi 
             <span class="text-xs font-weight-bold">{{ $semaine[3] }}</span>
 
+            @if(\Carbon\Carbon::parse($semaine[3])->toDateString() == now()->toDateString())
+         <a href="/ajouter/{{ $semaine[3] }}" class="btn btn-warning float-end">Ajouter</a>
+          @endif
           </h6>
           
         </div>
@@ -398,11 +409,11 @@
 
 
                 <td class="align-middle">
-                  <a href="manager/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="manager/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
                   </a>
                 </td>
@@ -429,6 +440,9 @@
           <h6 class="text-white text-capitalize ps-3">Vendredi  
             <span class="text-xs font-weight-bold">{{ $semaine[4] }}</span>
 
+            @if(\Carbon\Carbon::parse($semaine[4])->toDateString() == now()->toDateString())
+         <a href="/ajouter/{{ $semaine[0] }}" class="btn btn-warning float-end">Ajouter</a>
+          @endif
           </h6>
           
         </div>
@@ -495,11 +509,11 @@
 
 
                 <td class="align-middle">
-                  <a href="manager/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="manager/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
                   </a>
                 </td>

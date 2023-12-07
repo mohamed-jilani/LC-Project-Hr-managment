@@ -67,6 +67,7 @@ class TimesheetempController extends Controller
         ]);
         
         $request['user_id'] = Auth::id();
+        $request['dateCreation'] = now()->format('Y-m-d');
         Tache::create($request->all());
         
         return redirect('/user/ajouter')->with('status', 'ajout avec succés.');  

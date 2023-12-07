@@ -49,7 +49,7 @@
 
       <div class="mb-3">
         <label for="dateCreation" class="form-label">created at</label>
-        <input type="date" class="form-control" style="border: 2px solid #4deeea;" id="dateCreation" name="dateCreation" />
+        <input type="text" class="form-control" style="border: 2px solid #4deeea;" id="dateCreation" name="dateCreation" value = "{{now()->format('Y-m-d')}}" disabled />
         {{--<input type="date" class="form-control" style="border: 2px solid #4deeea;" id="dateCreation" name="dateCreation" value=" {{$dateCreation }}"/>--}}
         </div>
     
