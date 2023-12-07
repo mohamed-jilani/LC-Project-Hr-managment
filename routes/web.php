@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\HistoriqueController;
 use App\Http\Controllers\Backend\NotificationsController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\TimesheetController;
+use App\Http\Controllers\Backend\notificationRCongesController;
 
 use App\Http\Controllers\BackendEmployee\AdminEmpController;
 use App\Http\Controllers\BackendEmployee\DemandeDeCongesempController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\BackendEmployee\HistoriquempController;
 use App\Http\Controllers\BackendEmployee\NotificationsempController;
 use App\Http\Controllers\BackendEmployee\ProfilempController;
 use App\Http\Controllers\BackendEmployee\TimesheetempController;
+use App\Http\Controllers\BackendEmployee\notificationCongesController;
 
 use App\Http\Controllers\BackendManager\AdminMController;
 use App\Http\Controllers\BackendManager\DemandeDeCongesMController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\BackendManager\HistoriqueMController;
 use App\Http\Controllers\BackendManager\NotificationsMController;
 use App\Http\Controllers\BackendManager\ProfileMController;
 use App\Http\Controllers\BackendManager\TimesheetMController;
+use App\Http\Controllers\BackendManager\congesValidationController;
 
 
 
@@ -71,8 +74,10 @@ Route::get('timesheet',[TimesheetempController::class, 'timesheet'])->name('time
 Route::get('notifications',[NotificationsempController::class, 'notifications'])->name('notificationsemp');
 Route::get('demandeDeConges',[DemandeDeCongesempController::class, 'demandeDeConges'])->name('demandeDeCongesemp');
 Route::get('historique',[HistoriquempController::class, 'historique'])->name('historique');
+Route::get('notifconges',[notificationCongesController::class, 'notifconges'])->name('notifconges');
 
 
+    Route::post('/user/ajouterConges/traitement', [DemandeDeCongesempController::class, 'ajouter_congés_traitement']);
     Route::get('/user/delete-tache/{id}', [TimesheetempController::class, 'delete_tache']);
     Route::get('/user/update-tache/{id}', [TimesheetempController::class, 'update_tache']);
     Route::get('/user/ajouter', [TimesheetempController::class, 'ajouter_tache']);
@@ -94,7 +99,8 @@ Route::get('timesheet_hr',[TimesheetController::class, 'timesheet'])->name('time
 Route::get('notifications_hr',[NotificationsController::class, 'notifications'])->middleware('is_hr');
 Route::get('demandeDeConges_hr',[DemandeDeCongesController::class, 'demandeDeConges'])->middleware('is_hr');
 Route::get('historique_hr',[HistoriqueController::class, 'historique'])->middleware('is_hr');
-
+Route::post('/hr/ajouter/traitement', [DemandeDeCongesController::class, 'ajouter_congés_traitement']);
+Route::get('notifconges_hr',[notificationRCongesController::class, 'notifconges'])->name('notifconges');
 
 Route::prefix('hr')->group(function(){
 
@@ -123,7 +129,7 @@ Route::get('historique_manager',[HistoriqueMController::class, 'historique'])->n
 
 Route::prefix('manager')->group(function(){
     Route::get('/delete-tache/{id}', [TimesheetMController::class, 'delete_tache'])->middleware('is_admin');
-    Route::get('/update-tache/{id}', [TimesheetMController::class, 'update_tache'])->middleware('is_admin');
+    Route::get('/update-tache/{id}', [TimesheetMController::class, 'update_tache'])->middleware('is_admin')->name('update.tache');
     Route::get('/ajouter', [TimesheetMController::class, 'ajouter_tache'])->middleware('is_admin');
     Route::get('/ajouter/{thedate}', [TimesheetMController::class, 'ajouter_tache_jour'])->middleware('is_admin');
     Route::post('/ajouter/traitement', [TimesheetMController::class, 'ajouter_tache_traitement'])->middleware('is_admin');
@@ -132,10 +138,12 @@ Route::prefix('manager')->group(function(){
     Route::get('/validatAll', [TacheValidationController::class, 'validatAll'])->name('validatAll')->middleware('is_admin');
     Route::get('/prolongation_tache/{tacheId}', [TacheValidationController::class, 'prolongation_tache'])->name('prolongation_tache')->middleware('is_admin');
     Route::get('/validation/{tacheId}', [TacheValidationController::class, 'validateTache'])->name('validation_tache')->middleware('is_admin');
-
+    Route::get('/validationConges', [congesValidationController::class, 'validationConges'])->name('validationc')->middleware('is_admin');
+    Route::get('/validerConges/{tacheId}', [congesValidationController::class, 'validateConges'])->name('validationco')->middleware('is_admin');
+    Route::get('/refuserConges/{tacheId}', [congesValidationController::class, 'refuserConges'])->name('validationcr')->middleware('is_admin');
 });
 
-
+Route::post('/manager/ajouter/traitement', [DemandeDeCongesMController::class, 'ajouter_congés_traitement']);
 
 
 

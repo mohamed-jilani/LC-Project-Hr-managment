@@ -71,5 +71,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Job::class);
     }
+    
 }
 

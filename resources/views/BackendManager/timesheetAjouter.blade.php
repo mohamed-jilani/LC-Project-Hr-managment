@@ -5,7 +5,10 @@
     <div class="container">
       <div class="row">
         <div class="col s12">
-          <h1>ajouter une tache</h1>
+        <h1 style="font-family: 'Arial', sans-serif; font-size: 2em; color: #333; text-align: center; margin-bottom: 20px; text-transform: capitalize;">
+  Ajouter une tâche
+</h1>
+
           
           @if (session('status'))
             <div class="alert alert-success alert-dismissible text-white" role="alert">
