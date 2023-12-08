@@ -5,7 +5,10 @@
   <div class="row">
     <div class="col s12">
       <h1>ajouter une tache</h1>
-      <a href="/user/ajouter" class="btn btn-danger float-end"> ajouter</a>
+      <a href="/user/ajouter" class="btn btn-danger float-end" style="background-color: #87CEEB; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#5F9EA0';" onmouseout="this.style.backgroundColor='#87CEEB';">
+    Ajouter
+</a>
+
 
 
       @if (session('status'))

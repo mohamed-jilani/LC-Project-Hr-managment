@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\DB;
 class NotificationsMController extends Controller
 {
     //
+
+
     public function notifications(){
         //$tache = Tache::where('etat_id', 3)->get();
         //$user_id = Auth::id();
         $group_id = Auth::user()->group_id;
 
         //dd(now()->toDateString());
+
         
+
         $notif = DB::table('users as U')
         ->join('tache as T', 'U.id', '=', 'T.user_id')
         ->join('etat as E', 'T.etat_id', '=', 'E.id')

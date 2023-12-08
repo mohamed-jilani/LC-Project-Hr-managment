@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Tache ;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class NotificationsempController extends Controller
 {
@@ -12,11 +14,26 @@ class NotificationsempController extends Controller
         $userId = Auth::id();
 
     
-    $tache = Tache::whereIn('etat_id', [4, 5])
-                   ->where('user_id', $userId)
-                   ->get();
+    
+        $notif = DB::table('tache_history as th')
+        ->whereIn('th.etat_id', [1,2,3])
+        ->where('th.user_id', '=', $userId)
+        ->whereNotIn('th.user_id', function ($query) {
+            $query->select('user_id')->from('manager');
+        })
+        ->whereDate('th.dateCreation', now()->toDateString())
+        ->select('description','dateCreation','dateRealisationFinal','user_id','etat_id','created_at','updated_at')
+        ->get();
+        //dd($notif);
 
-        return view('BackendEmployee.notifications', compact('tache'));
+        /*
+        $tache = Tache::whereIn('etat_id', [1, 3])
+                    ->where('user_id', $userId)
+                    ->get();
+        */
+
+
+        return view('BackendEmployee.notifications', ['notifications'=>$notif]);
     }
     
     /*

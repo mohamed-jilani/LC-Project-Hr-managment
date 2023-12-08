@@ -77,6 +77,8 @@ Route::get('historique',[HistoriquempController::class, 'historique'])->name('hi
 Route::get('notifconges',[notificationCongesController::class, 'notifconges'])->name('notifconges');
 
 
+    Route::get('profileupdate/{id}',[ProfilempController::class, 'update_profil'])->name('profileupdate');
+    Route::post('profileupdatetraitement',[ProfilempController::class, 'updateProfile'])->name('profileupdatetraitement');
     Route::post('/user/ajouterConges/traitement', [DemandeDeCongesempController::class, 'ajouter_congés_traitement']);
     Route::get('/user/delete-tache/{id}', [TimesheetempController::class, 'delete_tache']);
     Route::get('/user/update-tache/{id}', [TimesheetempController::class, 'update_tache']);
@@ -99,10 +101,12 @@ Route::get('timesheet_hr',[TimesheetController::class, 'timesheet'])->name('time
 Route::get('notifications_hr',[NotificationsController::class, 'notifications'])->middleware('is_hr');
 Route::get('demandeDeConges_hr',[DemandeDeCongesController::class, 'demandeDeConges'])->middleware('is_hr');
 Route::get('historique_hr',[HistoriqueController::class, 'historique'])->middleware('is_hr');
-Route::post('/hr/ajouter/traitement', [DemandeDeCongesController::class, 'ajouter_congés_traitement']);
-Route::get('notifconges_hr',[notificationRCongesController::class, 'notifconges'])->name('notifconges');
+Route::post('/hr/ajouter/traitement', [DemandeDeCongesController::class, 'ajouter_congés_traitement'])->middleware('is_hr');
+Route::get('notifconges_hr',[notificationRCongesController::class, 'notifconges'])->name('notifconges')->middleware('is_hr');
 
 Route::prefix('hr')->group(function(){
+    Route::get('profileupdate/{id}',[ProfileController::class, 'update_profil'])->name('profileupdateHR')->middleware('is_hr');
+    Route::post('profileupdatetrait',[ProfileController::class, 'updateProfile'])->middleware('is_hr');
 
     Route::get('/delete-tache/{id}', [TimesheetController::class, 'delete_tache'])->middleware('is_hr');
     Route::get('/update-tache/{id}', [TimesheetController::class, 'update_tache'])->middleware('is_hr');
@@ -128,6 +132,9 @@ Route::get('historique_manager',[HistoriqueMController::class, 'historique'])->n
 
 
 Route::prefix('manager')->group(function(){
+    Route::get('updateprofile/{id}',[ProfileMController::class, 'update_profil'])->name('update_manager')->middleware('is_admin');
+    Route::post('updateProfiletrait',[ProfileMController::class, 'updateProfile'])->name('trait_manager')->middleware('is_admin');
+
     Route::get('/delete-tache/{id}', [TimesheetMController::class, 'delete_tache'])->middleware('is_admin');
     Route::get('/update-tache/{id}', [TimesheetMController::class, 'update_tache'])->middleware('is_admin')->name('update.tache');
     Route::get('/ajouter', [TimesheetMController::class, 'ajouter_tache'])->middleware('is_admin');

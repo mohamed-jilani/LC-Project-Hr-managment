@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col s12">
       <h1>Validation des Taches</h1>
-      <a href="/manager/validatAll" class="btn btn-danger float-end"> toutes les taches </a>
+      <a href="/manager/validatAll" class="btn btn-danger float-end" style="background-color: #87CEEB; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#5F9EA0';" onmouseout="this.style.backgroundColor='#87CEEB';"> toutes les taches </a>
 
       @if (session('status'))
         <div class="alert alert-success alert-dismissible text-white" role="alert">

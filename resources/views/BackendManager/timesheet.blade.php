@@ -4,16 +4,8 @@
 <div class="container">
   <div class="row">
     <div class="col s12">
-<<<<<<< HEAD
       <h1>ajouter une tache</h1>
-      <a href="manager/ajouter" class="btn btn-danger float-end"> ajouter</a>
-=======
-    <h1 style="font-family: 'Arial', sans-serif; font-size: 2em; color: #333; text-align: center; margin-bottom: 20px; text-transform: capitalize;">
-  Ajouter une tâche
-</h1>
-
-      <a href="manager/ajouter" class="btn btn-warning float-end"> ajouter</a>
->>>>>>> 73fb66b3a87d9e606f44560a7a387882828fa352
+      <a href="manager/ajouter" class="btn btn-danger float-end" style="background-color: #87CEEB; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; transition: background-color 0.3s ease;" onmouseover="this.style.backgroundColor='#5F9EA0';" onmouseout="this.style.backgroundColor='#87CEEB';"> ajouter</a>
 
 
       @if (session('status'))
@@ -53,13 +45,7 @@
               <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                 <h6 class="text-white text-capitalize ps-3">Lundi      
                   <span class="text-xs font-weight-bold">{{ $semaine[0] }}</span>
-<<<<<<< HEAD
                     
-=======
-                 <!-- @if(\Carbon\Carbon::parse($semaine[4])->toDateString() == now()->toDateString())
-         <a href="manager/ajouter/{{ $semaine[0] }}" class="btn btn-warning float-end">Ajouter</a>
-          @endif-->
->>>>>>> 73fb66b3a87d9e606f44560a7a387882828fa352
                 </h6>
               </div>
             </div>
@@ -151,10 +137,6 @@
           <h6 class="text-white text-capitalize ps-3">Mardi   
             <span class="text-xs font-weight-bold">{{ $semaine[1] }}</span>
 
-<<<<<<< HEAD
-=======
-            
->>>>>>> 73fb66b3a87d9e606f44560a7a387882828fa352
           </h6>
           
         </div>
@@ -253,10 +235,6 @@
           <h6 class="text-white text-capitalize ps-3">Mercredi  
             <span class="text-xs font-weight-bold">{{ $semaine[2] }}</span>
 
-<<<<<<< HEAD
-=======
-           
->>>>>>> 73fb66b3a87d9e606f44560a7a387882828fa352
           </h6>
           
         </div>
@@ -354,10 +332,6 @@
           <h6 class="text-white text-capitalize ps-3">Jeudi 
             <span class="text-xs font-weight-bold">{{ $semaine[3] }}</span>
 
-<<<<<<< HEAD
-=======
-           
->>>>>>> 73fb66b3a87d9e606f44560a7a387882828fa352
           </h6>
           
         </div>
@@ -455,10 +429,6 @@
           <h6 class="text-white text-capitalize ps-3">Vendredi  
             <span class="text-xs font-weight-bold">{{ $semaine[4] }}</span>
 
-<<<<<<< HEAD
-=======
-           
->>>>>>> 73fb66b3a87d9e606f44560a7a387882828fa352
           </h6>
           
         </div>
