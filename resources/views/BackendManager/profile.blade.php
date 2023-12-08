@@ -1,108 +1,50 @@
 @extends('Layout.app')
 @section('main-content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <!-- Your other head content -->
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-        }
-
-        .cv-container {
-            max-width: 800px;
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            color: #333;
-            font-size: 24px;
-        }
-
-        .section-title {
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-
-        .education-content,
-        .work-content {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .education-item,
-        .work-item {
-            margin-bottom: 15px;
-        }
-
-        p {
-            margin: 8px 0;
-        }
-
-        strong {
-            font-weight: bold;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="cv-container">
-        <header>
-            <h1>Profil</h1>
-        </header>
-        <section class="Des données personnels">
-            <div class="section-title">
-                <h1>Des données personnels</h1>
+<div class="container-fluid px-2 px-md-4">
+      <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
+        <span class="mask  bg-gradient-primary  opacity-6"></span>
+      </div>
+      <div class="card card-body mx-3 mx-md-4 mt-n6">
+        <div class="row gx-4 mb-2">
+          <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
-            <div class="education-content">
-                @foreach($users as $user)
-                    <div class="education-item">
-                        <p><strong>Nom:</strong>   {{ $user->user_name  }}</p>
-                        <p><strong>Email:</strong> {{ $user->user_email }}</p>
-                        <p><strong>Téléphone:</strong> {{ $user->user_phone  }}</p>
-                        <p><strong>Adresse:</strong> {{ $user->user_adresse  }}</p>
-                        <p><strong>Date d'embauche:</strong> {{ $user->user_hireDate  }}</p>
-                    </div>
-                @endforeach
+          </div>
+          <div class="col-auto my-auto">
+          @foreach($users as $user)
+            <div class="h-100">
+              <h5 class="mb-1">
+              {{$user->user_name}}
+              </h5>
+              <p class="mb-0 font-weight-normal text-sm">
+              {{ $user->statut }}
+              </p>
             </div>
-        </section>
-        <section class="education">
-            <div class="section-title">
-                <h1>Éducation</h1>
+            @endforeach
+          </div>
+          <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+            <div class="nav-wrapper position-relative end-0">
+              <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                
+                
+                
+              </ul>
             </div>
-            <div class="education-content">
-                @foreach($users as $user)
-                    <div class="education-item">
-                        <p><strong>Niveau:</strong> {{ $user->niveau  }}</p>
-                        <p><strong>Certification:</strong> {{ $user->certif  }}</p>
-                        <p><strong>Année de graduation:</strong> {{ $user->graduationYear  }}</p>
-                    </div>
-                @endforeach
-            </div>
-        </section>
-
-        <section class="work-experience">
-            <div class="section-title">
-                <h1>Expérience Professionnelle</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="row">
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <h6 class="mb-0">Equipe</h6>
+                </div>
+                <div class="card-body p-3">
+                 
+                <div class="section-title">
+                
             </div>
             <div class="work-content">
                 @forelse($users as $user)
@@ -116,27 +58,112 @@
                     <p>Aucune donnée disponible</p>
                 @endforelse
             </div>
-            <div class="update-profile-content" style="text-align: right;">
-    @foreach($users as $user)
-        @if (property_exists($user, 'user_id'))
-            <a href="{{ route('profileupdate', ['id' => $user->user_id]) }}"
-               style="background-color: #3498db; color: #fff; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; transition: background-color 0.3s ease;"
-               onmouseover="this.style.backgroundColor='#2980b9';"
-               onmouseout="this.style.backgroundColor='#3498db';"
-            >
-                Modifier le profil
-            </a>
-        @else
-            <p>Erreur: ID non défini</p>
-        @endif
-    @endforeach
-</div>
-        </section>
-
+                  
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-md-8 d-flex align-items-center">
+                      <h6 class="mb-0">Profile Information</h6>
+                    </div>
+                    @foreach($users as $user)
+                    <div class="col-md-4 text-end">
+                      <a href="{{ route('update_manager', ['id' => $user->user_id]) }}">
+                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                      </a>
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+                @foreach($users as $user)
+                <div class="card-body p-3">
+                  <p class="text-sm">
+                  
+                  Hi, {{$user->user_name}}  Thank you for joining us ! Your time and attention are truly appreciated
+                  </p>
+                  <hr class="horizontal gray-light my-4">
+                  <ul class="list-group">
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nom et Prénom:</strong> &nbsp; {{ $user->user_name  }}</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Téléphone:</strong> &nbsp; {{ $user->user_phone  }}</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ $user->user_email }}</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Adresse:</strong> &nbsp; {{ $user->user_adresse  }}</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Date d'embauche:</strong> &nbsp; {{ $user->user_hireDate  }}</li>
+                    
+                    
+                  </ul>
+                </div>
+                @endforeach
+              </div>
+            </div>
+            <div class="col-12 col-xl-4">
+              <div class="card card-plain h-100">
+                <div class="card-header pb-0 p-3">
+                  <h6 class="mb-0">Éducation</h6>
+                </div>
+                @foreach($users as $user)
+                <div class="card-body p-3">
+                  
+                  <hr class="horizontal gray-light my-4">
+                  <ul class="list-group">
+                    <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Niveau:</strong> &nbsp; {{ $user->niveau  }}</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Certification:</strong> &nbsp; {{ $user->certif  }}</li>
+                    <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Année de graduation:</strong> &nbsp; {{ $user->graduationYear  }}</li>
+                    
+                    
+                    
+                    
+                  </ul>
+                </div>
+                @endforeach
+              </div>
+              </div>
+            </div>
+            <div class="col-12 mt-4">
+              <div class="mb-5 ps-3">
+                <h6 class="mb-1">Projects</h6>
+                
+              </div>
+              <div class="row">
+                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                  <div class="card card-blog card-plain">
+                    <div class="card-header p-0 mt-n4 mx-3">
+                      <a class="d-block shadow-xl border-radius-xl">
+                        
+                      </a>
+                    </div>
+                    @foreach($users as $user)
+                    <div class="card-body p-3">
+                      <p class="mb-0 text-sm">Project {{ $user->nomprojet }}</p>
+                      <a href="javascript:;">
+                        
+                      </a>
+                      <p class="mb-4 text-sm">
+                      {{ $user->descprojet }}
+                      </p>
+                      <p class="mb-4 text-sm">
+                      {{ $user->limiteprojet }}
+                      </p>
+                     
+                    </div>
+                    @endforeach
+                  </div>
+                </div>
+                
+                
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-</body>
-
-</html>
-
 @endsection
+
+@push('custom-scripts')
+
+@endpush

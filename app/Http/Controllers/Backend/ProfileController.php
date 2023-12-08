@@ -24,6 +24,9 @@ class ProfileController extends Controller
         ->join('group as G', 'U.group_id', '=', 'G.id') 
         ->join('jobs as J', 'U.job_id', '=', 'J.id') 
         ->where('T.user_id', '=', $userId)
+        ->join('affectation as A', 'A.user_id', '=', 'U.id')
+        ->join('projet as P', 'A.projet_id', '=', 'P.id')
+        ->where('A.user_id', '=', $userId)
         
         ->select(
             'U.id as user_id',
@@ -38,7 +41,10 @@ class ProfileController extends Controller
             'D.nom as departementname', 
             'J.titre as statut',
             'J.salary as salary',
-            'G.nom as groupname' 
+            'G.nom as groupname',
+            'P.nom as nomprojet',
+            'P.description as descprojet',
+            'P.dateLimite as limiteprojet',
         )
         ->get();
 
