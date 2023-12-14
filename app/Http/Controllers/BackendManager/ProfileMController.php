@@ -13,7 +13,7 @@ use App\Models\Job;
 
 class ProfileMController extends Controller
 {
-    //
+
     public function profile(){
         $userId = Auth::id();
     
@@ -54,6 +54,17 @@ public function update_profil($id)
     $tache=User::find($id);
     return view('BackendManager.Profilupdate', ['tache' => $tache]);
 }
+
+public function updateprofileManager(Request $request)
+{
+    $request->validate([
+        'id' => 'required',
+        ]);
+        //dd($request->id);
+        $tache=User::find($request->id);
+        return view('BackendManager.Profilupdate', ['tache' => $tache]);
+}
+
 
 public function updateProfile(Request $request)
 {

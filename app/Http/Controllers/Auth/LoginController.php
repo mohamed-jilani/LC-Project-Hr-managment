@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Models\User;
 class LoginController extends Controller
 {
     /*
@@ -47,6 +48,7 @@ class LoginController extends Controller
         ]);
         //dd($input);
         if(auth()->attempt(array('email' => $input['email'], 'password' =>$input['password']))){
+            //User::where('id', auth()->user()->id)->update(['email_verified_at' => null]);
             if(auth()->user()->role === "manager"){
                 return redirect()->route('manager.home');
             }
@@ -60,6 +62,4 @@ class LoginController extends Controller
         }else{
             return redirect()->route('login')->with('error','Input proper email/password.');
         }
-    }
-}
-
+    }}

@@ -103,9 +103,16 @@
 
 
                         <td class="align-middle">
+                          <form action="/hr/update-tache" method="POST">
+                            @csrf
+                            <input type="hidden" name="id" value="{{$tach->id}}"/>
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                          </form>
+                          {{--
                           <a href="hr/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Edit
                           </a>
+                          --}}
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <a href="hr/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                             Supprimer
@@ -200,9 +207,16 @@
 
 
                 <td class="align-middle">
+                  <form action="/hr/update-tache" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$tach->id}}"/>
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                  </form>
+                  {{--
                   <a href="hr/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
+                  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="hr/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
@@ -298,9 +312,16 @@
 
 
                 <td class="align-middle">
+                  <form action="/hr/update-tache" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$tach->id}}"/>
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                  </form>
+                  {{--
                   <a href="hr/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
+                  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="hr/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
@@ -395,9 +416,16 @@
 
 
                 <td class="align-middle">
+                  <form action="/hr/update-tache" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$tach->id}}"/>
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                  </form>
+                  {{--
                   <a href="hr/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
+                  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="hr/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer
@@ -492,9 +520,16 @@
 
 
                 <td class="align-middle">
+                  <form action="/hr/update-tache" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$tach->id}}"/>
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                  </form>
+                  {{--
                   <a href="hr/update-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Edit
                   </a>
+                  --}}
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <a href="hr/delete-tache/{{ $tach->id }}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                     Supprimer

@@ -61,6 +61,8 @@ class TimesheetempController extends Controller
 
     public function ajouter_tache_traitement(Request $request)
     {
+        //dd("emp ",$request);
+
         $request->validate([
             'description' => 'required',
             'etat_id' => 'required',
@@ -73,12 +75,25 @@ class TimesheetempController extends Controller
         return redirect('/user/ajouter')->with('status', 'ajout avec succés.');  
     }
 
-
+    /*
     public function update_tache( $id)
     {
         $tache=Tache::find($id);
         $etats = Etat::all();
         return view('BackendEmployee.timesheetupdate', ['tache' => $tache, 'etats' => $etats ]);
+    }
+    */
+    public function update_tache(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+            ]);
+        //dd(Tache::find($request->id));
+        $tache=Tache::find($request->id);
+        //dd($tache);
+        $etats = Etat::all();
+        return view('BackendManager.timesheetupdate', ['tache' => $tache, 'etats' => $etats ]);
+        //return view('BackendManager.timesheetUpdateView', ['tache' => $tache, 'etats' => $etats ]);
     }
 
     public function update_tache_traitement(Request $request)

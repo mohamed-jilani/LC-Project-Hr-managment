@@ -1,8 +1,7 @@
 @extends('Layout.app')
 @section('main-content')
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
 
 <div class="container">
   <div class="row">
@@ -33,31 +32,41 @@
   </div>
 </div>
 
-<form action="/manager/update/traitement" method="POST">
+
+<form action="/user/update/traitement" method="POST">
   @csrf
-  <input type="hidden" name="id" value="{{$tache->id}}"/>
-  <div class="mb-3">
-    <label for="description" class="form-label">#ID</label>
-    <input type="text" class="form-control" style="border: 2px solid #4deeea;" id="description" name="description" value="{{$tache->id}}" disabled/>
-  </div>
+    
+    <input type="text"  name="id" style="display: none;" value="{{$tache->id}}"/>            
+    
+    <div class="mb-3">
+      <label for="description" class="form-label">#ID</label>
+      <input type="text" class="form-control" style="border: 2px solid #4deeea;" id="description" name="description" value="{{$tache->id}}" aria-label="Disabled input example" disabled/>
+    </div>
 
-  <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
-    <input type="text" class="form-control" style="border: 2px solid #4deeea;" id="description" name="description" value="{{$tache->description}}"/>
-  </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <input type="text" class="form-control" style="border: 2px solid #4deeea;" id="description" name="description" value="{{$tache->description}}"/>
+    </div>
 
+
+    <select class="form-select" name="etat_id" style="border: 2px solid #4deeea;" aria-label="État">
+      <option value="" selected>Choisissez un état</option>
+      @foreach ($etats as $etat)
+          <option value="{{ $etat->id }}">{{ $etat->nom }}</option>
+      @endforeach
+    </select>
   
-
-  <br>
-  <button type="submit" class="btn btn-primary">Modifier</button>
-
-  <br> 
-  <a href="/timesheet_manager" class="btn btn-danger">Revenir à la liste des tâches</a>
+    <br>
+    <button type="submit" class="btn btn-primary">modifier</button>
+    <br> 
+    <a href="/timesheet" class="btn btn-danger"> Revenir à liste des taches</a>
 
 </form>
 
 @endsection
 
 @push('custom-scripts')
-          
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>  
 @endpush

@@ -78,10 +78,17 @@ Route::get('notifconges',[notificationCongesController::class, 'notifconges'])->
 
 
     Route::get('profileupdate/{id}',[ProfilempController::class, 'update_profil'])->name('profileupdate');
+//
+    Route::post('updateprofileEmp',[ProfilempController::class, 'updateprofileEmp']);
+
     Route::post('profileupdatetraitement',[ProfilempController::class, 'updateProfile'])->name('profileupdatetraitement');
+    
     Route::post('/user/ajouterConges/traitement', [DemandeDeCongesempController::class, 'ajouter_congés_traitement']);
     Route::get('/user/delete-tache/{id}', [TimesheetempController::class, 'delete_tache']);
-    Route::get('/user/update-tache/{id}', [TimesheetempController::class, 'update_tache']);
+    //Route::get('/user/update-tache/{id}', [TimesheetempController::class, 'update_tache']);
+    
+    Route::post('/user/update-tache', [TimesheetempController::class, 'update_tache']);
+
     Route::get('/user/ajouter', [TimesheetempController::class, 'ajouter_tache']);
     Route::get('/user/ajouter/{thedate}', [TimesheetempController::class, 'ajouter_tache_jour']);
     
@@ -106,10 +113,15 @@ Route::get('notifconges_hr',[notificationRCongesController::class, 'notifconges'
 
 Route::prefix('hr')->group(function(){
     Route::get('profileupdate/{id}',[ProfileController::class, 'update_profil'])->name('profileupdateHR')->middleware('is_hr');
+    //
+    Route::post('updateprofileRH',[ProfileController::class, 'updateprofileRH'])->middleware('is_hr');
+    
     Route::post('profileupdatetrait',[ProfileController::class, 'updateProfile'])->middleware('is_hr');
 
     Route::get('/delete-tache/{id}', [TimesheetController::class, 'delete_tache'])->middleware('is_hr');
-    Route::get('/update-tache/{id}', [TimesheetController::class, 'update_tache'])->middleware('is_hr');
+    //Route::get('/update-tache/{id}', [TimesheetController::class, 'update_tache'])->middleware('is_hr');
+    Route::post('/update-tache', [TimesheetController::class, 'update_tache'])->middleware('is_hr');
+
     Route::get('/ajouter', [TimesheetController::class, 'ajouter_tache'])->middleware('is_hr');
     Route::get('/ajouter/{thedate}', [TimesheetController::class, 'ajouter_tache_jour'])->middleware('is_hr');
     Route::post('/ajouter/traitement', [TimesheetController::class, 'ajouter_tache_traitement'])->middleware('is_hr');
@@ -133,13 +145,18 @@ Route::get('historique_manager',[HistoriqueMController::class, 'historique'])->n
 
 Route::prefix('manager')->group(function(){
     Route::get('updateprofile/{id}',[ProfileMController::class, 'update_profil'])->name('update_manager')->middleware('is_admin');
+    Route::post('updateprofileManager',[ProfileMController::class, 'updateprofileManager'])->middleware('is_admin');
+    
     Route::post('updateProfiletrait',[ProfileMController::class, 'updateProfile'])->name('trait_manager')->middleware('is_admin');
 
     Route::get('/delete-tache/{id}', [TimesheetMController::class, 'delete_tache'])->middleware('is_admin');
-    Route::get('/update-tache/{id}', [TimesheetMController::class, 'update_tache'])->middleware('is_admin')->name('update.tache');
+    //Route::get('/update-tache/{id}', [TimesheetMController::class, 'update_tache'])->middleware('is_admin')->name('update.tache');
+    Route::post('/update-tache', [TimesheetMController::class, 'update_tache'])->middleware('is_admin')->name('update.tache');
+    
     Route::get('/ajouter', [TimesheetMController::class, 'ajouter_tache'])->middleware('is_admin');
     Route::get('/ajouter/{thedate}', [TimesheetMController::class, 'ajouter_tache_jour'])->middleware('is_admin');
-    Route::post('/ajouter/traitement', [TimesheetMController::class, 'ajouter_tache_traitement'])->middleware('is_admin');
+    Route::post('/ajouter/traitementn', [TimesheetMController::class, 'ajouter_tache_traitement'])->middleware('is_admin');
+    
     Route::post('/update/traitement', [TimesheetMController::class, 'update_tache_traitement'])->middleware('is_admin');
     Route::get('/validation', [TacheValidationController::class, 'index'])->name('validationp')->middleware('is_admin');
     Route::get('/validatAll', [TacheValidationController::class, 'validatAll'])->name('validatAll')->middleware('is_admin');

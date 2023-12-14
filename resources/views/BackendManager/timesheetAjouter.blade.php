@@ -47,7 +47,7 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form action="/manager/ajouter/traitement" method="POST">
+            <form action="/manager/ajouter/traitementn" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>

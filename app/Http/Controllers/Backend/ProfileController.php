@@ -57,6 +57,17 @@ public function update_profil($id)
     return view('Backend.Profilupdate', ['tache' => $tache]);
 }
 
+public function updateprofileRH(Request $request)
+{
+    $request->validate([
+        'id' => 'required',
+        ]);
+        //dd($request->id);
+        $tache=User::find($request->id);
+        return view('Backend.Profilupdate', ['tache' => $tache]);
+}
+
+
 public function updateProfile(Request $request)
 {
     // Validate the incoming request data

@@ -45,7 +45,6 @@ class ProfilempController extends Controller
             'P.nom as nomprojet',
             'P.description as descprojet',
             'P.dateLimite as limiteprojet',
-
         )
         ->get();
 
@@ -58,6 +57,17 @@ public function update_profil($id)
     $tache=User::find($id);
     return view('BackendEmployee.Profilupdate', ['tache' => $tache]);
 }
+
+public function updateprofileEmp(Request $request)
+{
+    $request->validate([
+        'id' => 'required',
+        ]);
+        //dd($request->id);
+        $tache=User::find($request->id);
+        return view('BackendEmployee.Profilupdate', ['tache' => $tache]);
+}
+
 
 
 public function updateProfile(Request $request)

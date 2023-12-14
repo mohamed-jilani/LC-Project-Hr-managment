@@ -15,8 +15,8 @@ class DemandeDeCongesempController extends Controller
        public function ajouter_congés_traitement(Request $request){
         $request->validate([
             'subject' => 'required',
-            'created_at' => 'required',
-            'finished_at' => 'required',
+            'created_at' => 'required|date',
+            'finished_at' =>'required|date|after:created_at',
             ]);
             $conges = new DemandeDeConges ();
             $conges->user_id = Auth::id();

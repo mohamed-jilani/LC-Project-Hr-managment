@@ -71,9 +71,18 @@
                     </div>
                     @foreach($users as $user)
                     <div class="col-md-4 text-end">
+                      <form action="/hr/updateprofileRH" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$user->user_id}}"/>
+                        <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                        </button>
+                      </form>
+                      {{-- 
                       <a href="{{ route('profileupdateHR', ['id' => $user->user_id]) }}">
                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
                       </a>
+                      --}}
                     </div>
                     @endforeach
                   </div>
